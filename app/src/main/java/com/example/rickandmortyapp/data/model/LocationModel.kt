@@ -8,7 +8,7 @@ data class LocationModel(
     @Json(name = "info")
     val info: Info?,
     @Json(name = "results")
-    val results: List<Location?>?
+    val results: List<Location>
 ){
     @JsonClass(generateAdapter = true)
     data class Location(

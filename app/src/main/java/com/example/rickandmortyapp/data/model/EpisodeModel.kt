@@ -8,7 +8,7 @@ data class EpisodeModel(
     @Json(name = "info")
     val info: Info?,
     @Json(name = "results")
-    val results: List<Episode?>?
+    val results: List<Episode>
 ){
     @JsonClass(generateAdapter = true)
     data class Episode(

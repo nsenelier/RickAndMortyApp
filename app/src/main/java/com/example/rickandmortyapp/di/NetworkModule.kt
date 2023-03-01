@@ -1,8 +1,8 @@
 package com.example.rickandmortyapp.di
 
 
-import com.example.rickandmortyapp.data.remote.Repository
-import com.example.rickandmortyapp.data.remote.RepositoryImpl
+import com.example.rickandmortyapp.data.repository.Repository
+import com.example.rickandmortyapp.data.repository.RepositoryImpl
 import com.example.rickandmortyapp.data.remote.RickMortyApi
 import com.example.rickandmortyapp.util.BASE_URL
 import com.squareup.moshi.Moshi
@@ -11,6 +11,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -64,5 +66,9 @@ import java.util.concurrent.TimeUnit
         ): Repository {
             return RepositoryImpl(rickMortyApi)
         }
+
+        @Provides
+        fun providesMainDispatcher(): CoroutineDispatcher = Dispatchers.Main
+
 
     }

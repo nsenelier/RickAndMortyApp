@@ -5,13 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.rickandmortyapp.data.model.CharacterModel
+import com.example.rickandmortyapp.data.model.EpisodeModel
 import com.example.rickandmortyapp.databinding.FragmentHomeBinding
+import com.example.rickandmortyapp.ui.gallery.EpisodeAdapter
+import com.example.rickandmortyapp.util.UIState
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class HomeFragment: Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
 
@@ -24,19 +30,39 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
+        val viewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        binding.let { _ ->
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+            viewModel.dataList.observe(viewLifecycleOwner) {
+                when (it) {
+                    is UIState.Loading -> {
+                        Toast.makeText(context, "Loading. . .!", Toast.LENGTH_SHORT).show()
+                    }
+                    is UIState.Success<*> -> {
+                        initView(it.response as CharacterModel)
+                    }
+                    is UIState.Failure -> {
+                        Toast.makeText(context, "Error occurred..", Toast.LENGTH_SHORT).show()
+                    }
+                    else -> {}
+                }
+            }
+
+            viewModel.getCharacterList()
+
         }
-        return root
+        return binding.root
     }
 
+    private fun initView(data: CharacterModel) {
+        data.let {
+            binding.rmCharacter.layoutManager = LinearLayoutManager(context)
+            binding.rmCharacter.adapter = CharacterAdapter(data.results)
+        }
+    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

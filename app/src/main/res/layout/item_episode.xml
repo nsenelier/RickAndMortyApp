@@ -6,46 +6,69 @@
     <data>
         <variable
             name="result"
-            type="com.example.rickandmortyapp.data.model.EpisodeModel" />
+            type="com.example.rickandmortyapp.data.model.EpisodeModel.Episode" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:id="@+id/iv_profile_pic"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp">
 
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="252dp"
+            android:layout_marginBottom="8dp"
+            android:text="@{result.name}"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/air_date"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.101"
-            app:layout_constraintStart_toEndOf="@+id/iv_profile_pic"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:text="@{result.firstName}"
-            tools:text="Bill gates " />
+            tools:text="Name of Episode " />
 
         <TextView
-            android:id="@+id/tv_desc"
+            android:id="@+id/air_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="@{result.air_date}"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.071"
+            app:layout_constraintStart_toStartOf="@+id/tv_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            tools:text="Air Date" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{result.episode}"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView6"
+            tools:text="Episode" />
+
+        <TextView
+            android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:maxLines="3"
-            android:text="@{result.jobtitle}"
-            android:ellipsize="end"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginEnd="124dp"
+            android:text="Episode:"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textView2"
             app:layout_constraintStart_toStartOf="@+id/tv_title"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title"
-            tools:text="Owner of Microsoft TECH and whatever other details" />
+            app:layout_constraintTop_toBottomOf="@+id/air_date"
+            app:layout_constraintVertical_bias="1.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

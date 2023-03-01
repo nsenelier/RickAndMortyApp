@@ -9,7 +9,7 @@ data class CharacterModel(
     @Json(name = "info")
     val info: Info?,
     @Json(name = "results")
-    val results: List<Character?>?
+    val results: List<Character>
 ) {
 
     @JsonClass(generateAdapter = true)
@@ -55,4 +55,5 @@ data class CharacterModel(
             val url: String?
         )
     }
+
 }

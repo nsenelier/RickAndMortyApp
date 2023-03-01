@@ -1,8 +1,11 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+
+    //Dagger
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+
     // SafeArgs
     id 'androidx.navigation.safeargs'
     id 'kotlin-parcelize'
@@ -63,8 +66,8 @@ dependencies {
     implementation 'com.squareup.moshi:moshi-kotlin:1.14.0'
     implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
 
-    // GSON -> to handle JSON data
-    implementation 'com.google.code.gson:gson:2.10.1'
+//    // GSON -> to handle JSON data
+//    implementation 'com.google.code.gson:gson:2.10.1'
 
     // Retrofit -> Help you simplify the request part of API -> con: you cannot set the media directly to your views/UI
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
@@ -74,9 +77,13 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.6'
     implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.6"
 
-    // Hilt -> Dependency Inject
-    implementation 'com.google.dagger:hilt-android:2.44.2'
-    kapt 'com.google.dagger:hilt-android-compiler:2.43.2'
+    // HILT -> Dependency Injection
+    implementation "com.google.dagger:hilt-android:2.44.2"
+    kapt "com.google.dagger:hilt-compiler:2.44.2"
+    //Dagger - Hilt
+    kapt "com.google.dagger:hilt-android-compiler:2.44"
+    kapt "androidx.hilt:hilt-compiler:1.0.0"
+    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
 
     // Glide -> Helps to set the media into UI/Views
     implementation 'com.github.bumptech.glide:glide:4.14.2'

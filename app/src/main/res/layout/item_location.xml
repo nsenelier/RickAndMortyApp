@@ -8,7 +8,7 @@
             name="result"
             type="com.example.rickandmortyapp.data.model.LocationModel.Location" />
     </data>
-
+<!--    This is suppose to be a cardview in order to fix the layout in the fragment-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,9 +20,16 @@
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
             android:layout_marginEnd="300dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="More Fonts..."
             android:text="@{result.name}"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/type_location"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Walmart " />
 
@@ -33,6 +40,8 @@
             android:layout_marginTop="8dp"
             android:maxLines="3"
             android:text="@{result.type}"
+            android:textStyle="bold"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/tv_title"
@@ -44,20 +53,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{result.dimension}"
+            android:textStyle="bold"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView6"
-            tools:text="Dimension:" />
+            tools:text="Dimensions" />
 
         <TextView
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="22dp"
             android:layout_marginTop="8dp"
             android:text="Dimension:"
+            android:textStyle="bold"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/type_location"
             app:layout_constraintTop_toBottomOf="@+id/type_location" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
